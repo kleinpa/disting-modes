@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.scss";
+
+import Card from "./Card";
+import Deck from "./Deck";
 
 function App() {
+  let deck = Deck;
+  let card1 = deck[Math.floor(Math.random() * deck.length)];
+  let card2 = deck[Math.floor(Math.random() * deck.length)];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <h1>disting-cards</h1>
       </header>
+      <div className="card-row">
+        <Card image={card1.image} name={card1.name} />
+        <Card image={card2.image} name={card2.name} />
+      </div>
     </div>
   );
 }
