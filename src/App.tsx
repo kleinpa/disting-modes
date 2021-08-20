@@ -18,6 +18,13 @@ function App() {
         <Card image={card1.image} name={card1.name} />
         <Card image={card2.image} name={card2.name} />
       </div>
+      <footer>
+        <div className="attribution">
+          <a href="http://www.vo1t.com/Vo1tIllustrated.html">
+            using helpful illustrations by Bob Borries
+          </a>
+        </div>
+      </footer>
     </div>
   );
 }
