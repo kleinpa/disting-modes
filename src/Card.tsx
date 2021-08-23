@@ -1,17 +1,33 @@
 import React from "react";
 import "./Card.scss";
+import { Mode } from "./DistingModes";
 
 interface CardProps {
-  image: string;
-  name: string;
+  mode: Mode;
 }
 
-function Card(props: CardProps) {
+export function Card(props: CardProps): JSX.Element {
   return (
-    <div className="Card">
-      <img src={props.image} alt={props.name} />
+    <div className="card">
+      <img
+        src={`${process.env.PUBLIC_URL}/images/${props.mode.image}`}
+        alt={props.mode.name}
+      />
     </div>
   );
 }
 
-export default Card;
+interface CardGridProps {
+  modes: Mode[];
+}
+export function CardGrid(param: CardGridProps): JSX.Element {
+  return (
+    <div className="card-grid">
+      {param.modes.map((mode) => (
+        <div key={mode.id} className="card-container">
+          <Card mode={mode} />
+        </div>
+      ))}
+    </div>
+  );
+}
