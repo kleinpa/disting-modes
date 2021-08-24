@@ -2,9 +2,9 @@ name: Build
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
   workflow_dispatch:
 
@@ -20,19 +20,19 @@ jobs:
           sudo apt install poppler-utils imagemagick
           pip3 install pdf2image
           npm install
-          
+
       - name: Download images
         run: |
           ./get_images.py
           ls public/images
-          
+
       - name: Build website
         run: |
           ./build_logo.sh
-          npm run build
+          REACT_APP_GA_TRACKING_ID=${{ secrets.GA_TRACKING_ID }} npm run build
           zip -r build.zip build
-          
-      - name: Archive 
+
+      - name: Archive
         uses: actions/upload-artifact@v2
         with:
           name: website
@@ -43,11 +43,11 @@ jobs:
     needs: build
 
     steps:
-      - name: Archive 
+      - name: Archive
         uses: actions/download-artifact@v2
         with:
           name: website
-          
+
       - name: Extract archive
         run: |
           unzip build.zip
@@ -58,4 +58,4 @@ jobs:
           args: deploy --dir=build --functions=functions
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}          
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}

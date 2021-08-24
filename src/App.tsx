@@ -1,4 +1,5 @@
 import React from "react";
+import ReactGA from "react-ga";
 import {
   BrowserRouter as Router,
   Link,
@@ -7,29 +8,50 @@ import {
   RouteComponentProps,
   Switch,
   useHistory,
+  useLocation,
   useRouteMatch,
 } from "react-router-dom";
 import "./App.scss";
 import { CardGrid } from "./Card";
 import modes, { GetModeById, Mode } from "./DistingModes";
+
 const maxPickModes = 5;
 
 /* When choosing random modes, avoid these less interesting modes. */
 const boringTags = ["utility", "playback", "scala", "record", "mix"];
 
+function useGoogleAnalytics() {
+  const location = useLocation();
+
+  React.useEffect(() => {
+    ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID, {});
+  }, []);
+
+  React.useEffect(() => {
+    ReactGA.pageview(location.pathname + location.search);
+  }, [location]);
+}
+
 export default function App(): JSX.Element {
+  function SwitchRoutes() {
+    useGoogleAnalytics();
+    return (
+      <main>
+        <Switch>
+          <Route exact path="/" component={ShowAll} />
+          <Route path="/pick/:count" component={RedirectToRandom} />
+          <Route path="/show/:modesSpec" component={ShowMultiple} />
+          <Route path="/search/:query" component={SearchResults} />
+        </Switch>
+      </main>
+    );
+  }
+
   return (
     <Router>
       <div className="app">
         <Header />
-        <main>
-          <Switch>
-            <Route exact path="/" component={ShowAll} />
-            <Route path="/pick/:count" component={RedirectToRandom} />
-            <Route path="/show/:modesSpec" component={ShowMultiple} />
-            <Route path="/search/:query" component={SearchResults} />
-          </Switch>
-        </main>
+        <SwitchRoutes />
         <Footer />
       </div>
     </Router>
