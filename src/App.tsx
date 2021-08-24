@@ -62,7 +62,7 @@ function Header() {
   return (
     <header>
       <Link to="/" className="title">
-        disting-cards
+        {process.env.REACT_APP_NAME}
       </Link>
       <SearchBox />
       <ul>
