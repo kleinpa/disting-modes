@@ -8,12 +8,10 @@ import pdf2image
 
 dir = "public/images"
 
-url = "http://www.vo1t.com/Euro/Illustrated/ESdistingMk4V4.15.pdf"
-url_sha256 = "e43e2b3a6cd74589c3d33ebfffc39b864fbb74d3d0ab856bd108ee2df7d46da8"
 prefix = "vo1t-distingmk4-"
 dpi = 300
 
-message = f"""These images are extracted from {url} by Bob Borries
+message = f"""These images are extracted from ESdistingMk4V4.15.pdf by Bob Borries
 http://www.vo1t.com/Vo1tIllustrated.html
 """
 
@@ -38,10 +36,9 @@ def main():
         f.write("*\n")
 
     # Download the PDF and extract all pages
-    with urllib.request.urlopen(url) as f:
+
+    with open("data/ESdistingMk4V4.15.pdf", "rb") as f:
         bs = f.read()
-    if hashlib.sha256(bs).hexdigest() != url_sha256:
-        raise RuntimeError("{url} hash does not match expected value")
     p = pdf2image.convert_from_bytes(bs, dpi=dpi)
 
     # Extract each row of images into a separate file
