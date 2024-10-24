@@ -1,0 +1,20 @@
+{
+	"image": "mcr.microsoft.com/devcontainers/universal:2",
+	"features": {
+		"ghcr.io/devcontainers/features/pnpm:1": {
+			"version": "9"
+		},
+		"ghcr.io/devcontainers/features/python:1": {
+			"version": "3.9"
+		},
+		"ghcr.io/devcontainers/features/apt:1": {
+			"packages": [
+				"poppler-utils",
+				"imagemagick"
+			]
+		}
+	},
+	"postCreateCommand": "pip install pdf2image && pnpm install",
+	"forwardPorts": [],
+	"onCreateCommand": "echo 'Dev container initialized!'",
+}
