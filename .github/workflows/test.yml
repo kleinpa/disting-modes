@@ -10,7 +10,7 @@ jobs:
         run: |
           sudo apt install poppler-utils imagemagick
           pip3 install pdf2image
-          npm install
+          pnpm install
       - name: Extract images
         run: |
           ./get_images.py
