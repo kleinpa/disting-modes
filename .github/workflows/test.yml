@@ -9,17 +9,8 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           version: 9
-      - name: Install dependencies
-        run: |
-          sudo apt install poppler-utils imagemagick
-          pip3 install pdf2image
-          pnpm install
-      - name: Extract images
-        run: |
-          ./get_images.py
-          ls public/images
+          run_install: true
       - name: Build website
         run: |
-          ./build_logo.sh
-          REACT_APP_GA_TRACKING_ID=${{ secrets.GA_TRACKING_ID }} pnpm run build
+          pnpm build
           zip -r build.zip build

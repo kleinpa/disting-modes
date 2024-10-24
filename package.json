@@ -21,7 +21,6 @@
     "web-vitals": "^4.2.4"
   },
   "scripts": {
-    "prebuild": "./build_logo.sh && python get_images.py",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

@@ -90,15 +90,15 @@ function Footer() {
 function SearchBox() {
   const navigate = useNavigate();
   const { query = "" } = useParams<SearchResultsParams>();
-  const [inputValue, setInputValue] = useState(query); // Local state for the input value
+  const [inputValue, setInputValue] = useState(query);
 
   useEffect(() => {
-    setInputValue(query); // Update local state when URL changes
+    setInputValue(query);
   }, [query]);
 
   function handleSearchInput(e: React.FormEvent<HTMLInputElement>) {
     const newQuery = e.currentTarget.value;
-    setInputValue(newQuery); // Update local state
+    setInputValue(newQuery);
     const url = newQuery ? `/search/${encodeURIComponent(newQuery)}` : "/";
     navigate(url, { state: { search: true } });
   }
@@ -107,7 +107,7 @@ function SearchBox() {
     <input
       autoFocus
       placeholder="search"
-      value={inputValue} // Use local state here
+      value={inputValue}
       onChange={handleSearchInput}
     />
   );
