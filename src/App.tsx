@@ -1,15 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import ReactGA from "react-ga";
 import {
   BrowserRouter as Router,
   Link,
-  Redirect,
+  Navigate,
   Route,
-  RouteComponentProps,
-  Switch,
-  useHistory,
+  Routes,
   useLocation,
-  useRouteMatch,
+  useNavigate,
+  useParams,
 } from "react-router-dom";
 import "./App.scss";
 import { CardGrid } from "./Card";
@@ -37,12 +36,12 @@ export default function App(): JSX.Element {
     useGoogleAnalytics();
     return (
       <main>
-        <Switch>
-          <Route exact path="/" component={ShowAll} />
-          <Route path="/pick/:count" component={RedirectToRandom} />
-          <Route path="/show/:modesSpec" component={ShowMultiple} />
-          <Route path="/search/:query" component={SearchResults} />
-        </Switch>
+        <Routes>
+          <Route path="/" element={<ShowAll />} />
+          <Route path="/pick/:count" element={<RedirectToRandom />} />
+          <Route path="/show/:modesSpec" element={<ShowMultiple />} />
+          <Route path="/search/:query" element={<SearchResults />} />
+        </Routes>
       </main>
     );
   }
@@ -88,39 +87,39 @@ function Footer() {
   );
 }
 
-interface IsSearchLocationState {
-  search: boolean;
-}
 function SearchBox() {
-  const history = useHistory<IsSearchLocationState>();
-  const routeMatch = useRouteMatch<SearchResultsParams>("/search/:query");
-  const query = routeMatch?.params.query || "";
+  const navigate = useNavigate();
+  const { query = "" } = useParams<SearchResultsParams>();
+  const [inputValue, setInputValue] = useState(query); // Local state for the input value
+
+  useEffect(() => {
+    setInputValue(query); // Update local state when URL changes
+  }, [query]);
 
   function handleSearchInput(e: React.FormEvent<HTMLInputElement>) {
-    const query = e.currentTarget.value;
-    const url = query ? `/search/${encodeURIComponent(query)}` : "/";
-
-    // Keep the url up to date but don't flood history.
-    if (history.location.state?.search) {
-      history.replace(url, { search: true });
-    } else {
-      history.push(url, { search: true });
-    }
+    const newQuery = e.currentTarget.value;
+    setInputValue(newQuery); // Update local state
+    const url = newQuery ? `/search/${encodeURIComponent(newQuery)}` : "/";
+    navigate(url, { state: { search: true } });
   }
+
   return (
     <input
       autoFocus
       placeholder="search"
-      value={query}
+      value={inputValue} // Use local state here
       onChange={handleSearchInput}
     />
   );
 }
 
-interface SearchResultsParams {
+interface SearchResultsParams extends Record<string, string | undefined> {
   query: string;
 }
-function SearchResults(props: RouteComponentProps<SearchResultsParams>) {
+
+function SearchResults() {
+  const { query = "" } = useParams<SearchResultsParams>();
+
   function normalize(s: string) {
     return s.toLowerCase();
   }
@@ -129,9 +128,9 @@ function SearchResults(props: RouteComponentProps<SearchResultsParams>) {
     return [m.id, m.name, ...m.tags];
   }
 
-  const query = normalize(decodeURIComponent(props.match.params.query));
+  const normalizedQuery = normalize(decodeURIComponent(query));
   const results = modes.filter((m) =>
-    extractText(m).some((s) => normalize(s).includes(query))
+    extractText(m).some((s) => normalize(s).includes(normalizedQuery))
   );
   return <CardGrid modes={results} />;
 }
@@ -149,10 +148,13 @@ function unpackModes(s: string) {
   }, []);
 }
 
-interface RedirectToRandomParams {
+
+interface RedirectToRandomParams extends Record<string, string | undefined> {
   count: string;
 }
-function RedirectToRandom(params: RouteComponentProps<RedirectToRandomParams>) {
+function RedirectToRandom() {
+  const { count = "" } = useParams<RedirectToRandomParams>();
+
   function Clamp(n: number, min: number, max: number) {
     return Math.min(Math.max(n || 0, min), max);
   }
@@ -166,15 +168,16 @@ function RedirectToRandom(params: RouteComponentProps<RedirectToRandomParams>) {
     return funModes[Math.floor(Math.random() * funModes.length)];
   }
 
-  const count = Clamp(parseInt(params.match.params.count), 1, maxPickModes);
-  return <Redirect to={showModeUrl(ListOf(count, RandomMode))} />;
+  const clampedCount = Clamp(parseInt(count), 1, maxPickModes);
+  return <Navigate to={showModeUrl(ListOf(clampedCount, RandomMode))} />;
 }
 
-interface ShowMultipleParams {
+interface ShowMultipleParams extends Record<string, string | undefined> {
   modesSpec: string;
 }
-function ShowMultiple(param: RouteComponentProps<ShowMultipleParams>) {
-  const modes = unpackModes(param.match.params.modesSpec);
+function ShowMultiple() {
+  const { modesSpec = "" } = useParams<ShowMultipleParams>();
+  const modes = unpackModes(modesSpec);
   return <CardGrid modes={modes} />;
 }
 
