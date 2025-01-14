@@ -46,10 +46,10 @@ importers:
         version: 7.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-scripts:
         specifier: ^5.0.1
-        version: 5.0.1(@babel/plugin-syntax-flow@7.25.9(@babel/core@7.25.9))(@babel/plugin-transform-react-jsx@7.25.9(@babel/core@7.25.9))(@types/babel__core@7.20.5)(@types/webpack@4.41.40)(eslint@8.57.1)(node-notifier@8.0.2)(react@18.3.1)(rework-visit@1.0.0)(rework@1.0.1)(sass@1.83.1)(sockjs-client@1.6.1)(type-fest@0.21.3)(typescript@5.7.3)
+        version: 5.0.1(@babel/plugin-syntax-flow@7.25.9(@babel/core@7.25.9))(@babel/plugin-transform-react-jsx@7.25.9(@babel/core@7.25.9))(@types/babel__core@7.20.5)(@types/webpack@4.41.40)(eslint@8.57.1)(node-notifier@8.0.2)(react@18.3.1)(rework-visit@1.0.0)(rework@1.0.1)(sass@1.83.4)(sockjs-client@1.6.1)(type-fest@0.21.3)(typescript@5.7.3)
       sass:
         specifier: ^1.80.4
-        version: 1.83.1
+        version: 1.83.4
       typescript:
         specifier: ^5.6.3
         version: 5.7.3
@@ -4854,9 +4854,9 @@ packages:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
     engines: {node: '>=8.10.0'}
 
-  readdirp@4.0.2:
-    resolution: {integrity: sha512-yDMz9g+VaZkqBYS/ozoBJwaBhTbZo3UNYQHNRw1D3UFQB8oHB4uS/tAODO+ZLjGWmUbKnIlOWO+aaIiAxrUWHA==}
-    engines: {node: '>= 14.16.0'}
+  readdirp@4.1.1:
+    resolution: {integrity: sha512-h80JrZu/MHUZCyHu5ciuoI0+WxsCxzxJTILn6Fs8rxSnFPh+UVHYfeIxK1nVGugMqkfC4vJcBOYbkfkwYK0+gw==}
+    engines: {node: '>= 14.18.0'}
 
   recursive-readdir@2.2.2:
     resolution: {integrity: sha512-nRCcW9Sj7NuZwa2XvH9co8NPeXUBhZP7CRKJtU+cS6PW9FpCIFoI5ib0NT1ZrbNuPoRy0ylyCaUL8Gih4LSyFg==}
@@ -5038,8 +5038,8 @@ packages:
       sass-embedded:
         optional: true
 
-  sass@1.83.1:
-    resolution: {integrity: sha512-EVJbDaEs4Rr3F0glJzFSOvtg2/oy2V/YrGFPqPY24UqcLDWcI9ZY5sN+qyO3c/QCZwzgfirvhXvINiJCE/OLcA==}
+  sass@1.83.4:
+    resolution: {integrity: sha512-B1bozCeNQiOgDcLd33e2Cs2U60wZwjUUXzh900ZyQF5qUasvMdDZYbQ566LJu7cqR+sAHlAfO6RMkaID5s6qpA==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -8422,7 +8422,7 @@ snapshots:
 
   chokidar@4.0.3:
     dependencies:
-      readdirp: 4.0.2
+      readdirp: 4.1.1
 
   chrome-trace-event@1.0.4: {}
 
@@ -11595,7 +11595,7 @@ snapshots:
     optionalDependencies:
       react-dom: 18.3.1(react@18.3.1)
 
-  react-scripts@5.0.1(@babel/plugin-syntax-flow@7.25.9(@babel/core@7.25.9))(@babel/plugin-transform-react-jsx@7.25.9(@babel/core@7.25.9))(@types/babel__core@7.20.5)(@types/webpack@4.41.40)(eslint@8.57.1)(node-notifier@8.0.2)(react@18.3.1)(rework-visit@1.0.0)(rework@1.0.1)(sass@1.83.1)(sockjs-client@1.6.1)(type-fest@0.21.3)(typescript@5.7.3):
+  react-scripts@5.0.1(@babel/plugin-syntax-flow@7.25.9(@babel/core@7.25.9))(@babel/plugin-transform-react-jsx@7.25.9(@babel/core@7.25.9))(@types/babel__core@7.20.5)(@types/webpack@4.41.40)(eslint@8.57.1)(node-notifier@8.0.2)(react@18.3.1)(rework-visit@1.0.0)(rework@1.0.1)(sass@1.83.4)(sockjs-client@1.6.1)(type-fest@0.21.3)(typescript@5.7.3):
     dependencies:
       '@babel/core': 7.25.9
       '@pmmmwh/react-refresh-webpack-plugin': 0.5.15(@types/webpack@4.41.40)(react-refresh@0.11.0)(sockjs-client@1.6.1)(type-fest@0.21.3)(webpack-dev-server@4.15.2(webpack@5.95.0))(webpack@5.95.0)
@@ -11635,7 +11635,7 @@ snapshots:
       react-refresh: 0.11.0
       resolve: 1.22.8
       resolve-url-loader: 4.0.0(rework-visit@1.0.0)(rework@1.0.1)
-      sass-loader: 12.6.0(sass@1.83.1)(webpack@5.95.0)
+      sass-loader: 12.6.0(sass@1.83.4)(webpack@5.95.0)
       semver: 7.6.3
       source-map-loader: 3.0.2(webpack@5.95.0)
       style-loader: 3.3.4(webpack@5.95.0)
@@ -11710,7 +11710,7 @@ snapshots:
     dependencies:
       picomatch: 2.3.1
 
-  readdirp@4.0.2: {}
+  readdirp@4.1.1: {}
 
   recursive-readdir@2.2.2:
     dependencies:
@@ -11884,15 +11884,15 @@ snapshots:
 
   sanitize.css@10.0.0: {}
 
-  sass-loader@12.6.0(sass@1.83.1)(webpack@5.95.0):
+  sass-loader@12.6.0(sass@1.83.4)(webpack@5.95.0):
     dependencies:
       klona: 2.0.6
       neo-async: 2.6.2
       webpack: 5.95.0
     optionalDependencies:
-      sass: 1.83.1
+      sass: 1.83.4
 
-  sass@1.83.1:
+  sass@1.83.4:
     dependencies:
       chokidar: 4.0.3
       immutable: 5.0.3
