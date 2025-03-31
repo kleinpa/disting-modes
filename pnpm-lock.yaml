@@ -46,10 +46,10 @@ importers:
         version: 7.4.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-scripts:
         specifier: ^5.0.1
-        version: 5.0.1(@babel/plugin-syntax-flow@7.25.9(@babel/core@7.25.9))(@babel/plugin-transform-react-jsx@7.25.9(@babel/core@7.25.9))(@types/babel__core@7.20.5)(@types/webpack@4.41.40)(eslint@8.57.1)(node-notifier@8.0.2)(react@18.3.1)(rework-visit@1.0.0)(rework@1.0.1)(sass@1.86.0)(sockjs-client@1.6.1)(type-fest@0.21.3)(typescript@5.8.2)
+        version: 5.0.1(@babel/plugin-syntax-flow@7.25.9(@babel/core@7.25.9))(@babel/plugin-transform-react-jsx@7.25.9(@babel/core@7.25.9))(@types/babel__core@7.20.5)(@types/webpack@4.41.40)(eslint@8.57.1)(node-notifier@8.0.2)(react@18.3.1)(rework-visit@1.0.0)(rework@1.0.1)(sass@1.86.1)(sockjs-client@1.6.1)(type-fest@0.21.3)(typescript@5.8.2)
       sass:
         specifier: ^1.80.4
-        version: 1.86.0
+        version: 1.86.1
       typescript:
         specifier: ^5.6.3
         version: 5.8.2
@@ -3269,8 +3269,8 @@ packages:
   immer@9.0.21:
     resolution: {integrity: sha512-bc4NBHqOqSfRW7POMkHd51LvClaeMXpm8dx0e8oE2GORbq5aRK7Bxl4FyzVLdGtLmvLKL7BTDBG5ACQm4HWjTA==}
 
-  immutable@5.0.3:
-    resolution: {integrity: sha512-P8IdPQHq3lA1xVeBRi5VPqUm5HDgKnx0Ru51wZz5mjxHr5n3RWhjIpOFU7ybkUxfB+5IToy+OLaHYDBIWsv+uw==}
+  immutable@5.1.1:
+    resolution: {integrity: sha512-3jatXi9ObIsPGr3N5hGw/vWWcTkq6hUYhpQz4k0wLC+owqWi/LiugIw9x0EdNZ2yGedKN/HzePiBvaJRXa0Ujg==}
 
   import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
@@ -5042,8 +5042,8 @@ packages:
       sass-embedded:
         optional: true
 
-  sass@1.86.0:
-    resolution: {integrity: sha512-zV8vGUld/+mP4KbMLJMX7TyGCuUp7hnkOScgCMsWuHtns8CWBoz+vmEhoGMXsaJrbUP8gj+F1dLvVe79sK8UdA==}
+  sass@1.86.1:
+    resolution: {integrity: sha512-Yaok4XELL1L9Im/ZUClKu//D2OP1rOljKj0Gf34a+GzLbMveOzL7CfqYo+JUa5Xt1nhTCW+OcKp/FtR7/iqj1w==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -9797,7 +9797,7 @@ snapshots:
 
   immer@9.0.21: {}
 
-  immutable@5.0.3: {}
+  immutable@5.1.1: {}
 
   import-fresh@3.3.0:
     dependencies:
@@ -11608,7 +11608,7 @@ snapshots:
     optionalDependencies:
       react-dom: 18.3.1(react@18.3.1)
 
-  react-scripts@5.0.1(@babel/plugin-syntax-flow@7.25.9(@babel/core@7.25.9))(@babel/plugin-transform-react-jsx@7.25.9(@babel/core@7.25.9))(@types/babel__core@7.20.5)(@types/webpack@4.41.40)(eslint@8.57.1)(node-notifier@8.0.2)(react@18.3.1)(rework-visit@1.0.0)(rework@1.0.1)(sass@1.86.0)(sockjs-client@1.6.1)(type-fest@0.21.3)(typescript@5.8.2):
+  react-scripts@5.0.1(@babel/plugin-syntax-flow@7.25.9(@babel/core@7.25.9))(@babel/plugin-transform-react-jsx@7.25.9(@babel/core@7.25.9))(@types/babel__core@7.20.5)(@types/webpack@4.41.40)(eslint@8.57.1)(node-notifier@8.0.2)(react@18.3.1)(rework-visit@1.0.0)(rework@1.0.1)(sass@1.86.1)(sockjs-client@1.6.1)(type-fest@0.21.3)(typescript@5.8.2):
     dependencies:
       '@babel/core': 7.25.9
       '@pmmmwh/react-refresh-webpack-plugin': 0.5.15(@types/webpack@4.41.40)(react-refresh@0.11.0)(sockjs-client@1.6.1)(type-fest@0.21.3)(webpack-dev-server@4.15.2(webpack@5.95.0))(webpack@5.95.0)
@@ -11648,7 +11648,7 @@ snapshots:
       react-refresh: 0.11.0
       resolve: 1.22.8
       resolve-url-loader: 4.0.0(rework-visit@1.0.0)(rework@1.0.1)
-      sass-loader: 12.6.0(sass@1.86.0)(webpack@5.95.0)
+      sass-loader: 12.6.0(sass@1.86.1)(webpack@5.95.0)
       semver: 7.6.3
       source-map-loader: 3.0.2(webpack@5.95.0)
       style-loader: 3.3.4(webpack@5.95.0)
@@ -11897,18 +11897,18 @@ snapshots:
 
   sanitize.css@10.0.0: {}
 
-  sass-loader@12.6.0(sass@1.86.0)(webpack@5.95.0):
+  sass-loader@12.6.0(sass@1.86.1)(webpack@5.95.0):
     dependencies:
       klona: 2.0.6
       neo-async: 2.6.2
       webpack: 5.95.0
     optionalDependencies:
-      sass: 1.86.0
+      sass: 1.86.1
 
-  sass@1.86.0:
+  sass@1.86.1:
     dependencies:
       chokidar: 4.0.3
-      immutable: 5.0.3
+      immutable: 5.1.1
       source-map-js: 1.2.1
     optionalDependencies:
       '@parcel/watcher': 2.5.1
