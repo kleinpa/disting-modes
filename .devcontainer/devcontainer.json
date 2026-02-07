@@ -5,7 +5,7 @@
 			"version": "9"
 		},
 		"ghcr.io/devcontainers/features/python:1": {
-			"version": "3.13"
+			"version": "3.14"
 		},
 		"ghcr.io/devcontainers/features/apt:1": {
 			"packages": [
